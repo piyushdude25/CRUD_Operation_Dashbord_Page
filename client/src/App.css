@@ -1,0 +1,13 @@
+.App {
+  background-color: #39588f;
+  color: #fec324;
+}
+.flex {
+  display: flex;
+}
+.left {
+  width: 15%;
+}
+.right {
+  width: 85%;
+}
