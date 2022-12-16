@@ -1,3 +1,11 @@
+#In the project directory, you can run > client:
+
+### `npm start`
+
+To run Server> server:
+
+### `npm start`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
