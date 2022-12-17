@@ -158,6 +158,10 @@ function Posts() {
               >
                 <h4>{post.name}</h4>
                 <p>{post.email}</p>
+                <p>{post.mobile}</p>
+                <p>{post.address}</p>
+                <p>{post.pincode}</p>
+                <p>{post.position}</p>
                 <div
                   style={{
                     display: "flex",
