@@ -1,21 +1,22 @@
 import "./App.css";
-import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 function App() {
-  const navigate = useNavigate();
-
   return (
     <div className="App flex">
       <div className="left">
-        <ul>
-          <li onClick={() => navigate("create")}>DataBord</li>
-          <li>Costormar</li>
-          <li>User</li>
-          <li>Service</li>
-          <li>Booking</li>
-        </ul>
+        <div className="leftOption">
+          <p>
+            <Link to={"/create/posts"}>DataBord</Link>
+          </p>
+          <p>Costormar</p>
+          <p>User</p>
+          <p>Service</p>
+          <p>Booking</p>
+        </div>
       </div>
+      <div className="hr"></div>
       <div className="right">
         <h1>Home page</h1>
       </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
-
+import { Link } from "react-router-dom";
 function Posts() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
@@ -81,128 +81,133 @@ function Posts() {
   };
 
   return (
-    <div style={{ width: "90%", margin: "auto auto", textAlign: "center" }}>
-      <h1>Manage User</h1>
-      <Button
-        variant="outline-dark"
-        style={{ width: "100%", marginBottom: "1rem" }}
-        onClick={() => navigate(-1)}
-      >
-        BACK
-      </Button>
+    <div className="App flex">
+      <div className="left">
+        <div className="leftOption">
+          <p>
+            <Link to={"/create/posts"}>DataBord</Link>
+          </p>
+          <p>Costormar</p>
+          <p>User</p>
+          <p>Service</p>
+          <p>Booking</p>
+        </div>
+      </div>
+      <div className="hr"></div>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Update a User</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form.Control
-            placeholder="name"
-            name="name"
-            value={updatedPost.name ? updatedPost.name : ""}
-            style={{ marginBottom: "1rem" }}
-            onChange={handleChange}
-          />
-          <Form.Control
-            placeholder="email"
-            name="email"
-            onChange={handleChange}
-            value={updatedPost.email ? updatedPost.email : ""}
-          />
-          <Form.Control
-            placeholder="mobile"
-            name="mobile"
-            onChange={handleChange}
-            value={updatedPost.mobile ? updatedPost.mobile : ""}
-          />
-          <Form.Control
-            placeholder="address"
-            name="address"
-            onChange={handleChange}
-            value={updatedPost.address ? updatedPost.address : ""}
-          />
-          <Form.Control
-            placeholder="pincode"
-            name="pincode"
-            onChange={handleChange}
-            value={updatedPost.pincode ? updatedPost.pincode : ""}
-          />
-          <Form.Control
-            placeholder="position"
-            name="position"
-            onChange={handleChange}
-            value={updatedPost.position ? updatedPost.position : ""}
-          />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={saveUpdatedPost}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <div className="right">
+        <div>
+          <h1>Manage User</h1>
+          <span>
+            <Link to={"/create"}>Add User</Link>
+          </span>
+        </div>
+        <Button
+          variant="outline-dark"
+          style={{ width: "100%", marginBottom: "1rem" }}
+          onClick={() => navigate(-1)}
+        >
+          BACK
+        </Button>
 
-      {posts ? (
-        <>
-          {posts.map((post) => {
-            return (
-              <div
-                style={{
-                  marginBottom: "1rem",
-                  border: "solid lightgray 1px",
-                  borderRadius: "8px",
-                }}
-                key={post._id}
-              >
-                <h4>{post.name}</h4>
-                <p>{post.email}</p>
-                <p>{post.mobile}</p>
-                <p>{post.address}</p>
-                <p>{post.pincode}</p>
-                <p>{post.position}</p>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Update a User</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Control
+              placeholder="name"
+              name="name"
+              value={updatedPost.name ? updatedPost.name : ""}
+              style={{ marginBottom: "1rem" }}
+              onChange={handleChange}
+            />
+            <Form.Control
+              placeholder="email"
+              name="email"
+              onChange={handleChange}
+              value={updatedPost.email ? updatedPost.email : ""}
+            />
+            <Form.Control
+              placeholder="mobile"
+              name="mobile"
+              onChange={handleChange}
+              value={updatedPost.mobile ? updatedPost.mobile : ""}
+            />
+            <Form.Control
+              placeholder="address"
+              name="address"
+              onChange={handleChange}
+              value={updatedPost.address ? updatedPost.address : ""}
+            />
+            <Form.Control
+              placeholder="pincode"
+              name="pincode"
+              onChange={handleChange}
+              value={updatedPost.pincode ? updatedPost.pincode : ""}
+            />
+            <Form.Control
+              placeholder="position"
+              name="position"
+              onChange={handleChange}
+              value={updatedPost.position ? updatedPost.position : ""}
+            />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={saveUpdatedPost}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
-                    padding: "1rem",
-                  }}
-                >
-                  <Button
-                    variant="outline-info"
-                    onClick={() =>
-                      updatePost(
-                        post._id,
-                        post.name,
-                        post.email,
-                        post.mobile,
-                        post.address,
-                        post.pincode,
-                        post.position
-                      )
-                    }
-                    style={{ width: "100%", marginRight: "1rem" }}
-                  >
-                    UPDATE
-                  </Button>
-                  <Button
-                    onClick={() => deletePost(post._id)}
-                    variant="outline-danger"
-                    style={{ width: "100%" }}
-                  >
-                    DELETE
-                  </Button>
+        {posts ? (
+          <>
+            {posts.map((post) => {
+              return (
+                <div className="postBox" key={post._id}>
+                  <div className="userDetails">
+                    <h4>{post.name}</h4>
+                    <p>{post.email}</p>
+                    <p>{post.mobile}</p>
+                    <p>{post.address}</p>
+                    <p>{post.pincode}</p>
+                    <p>{post.position}</p>
+                  </div>
+                  <div>
+                    <Button
+                      variant="outline-info"
+                      onClick={() =>
+                        updatePost(
+                          post._id,
+                          post.name,
+                          post.email,
+                          post.mobile,
+                          post.address,
+                          post.pincode,
+                          post.position
+                        )
+                      }
+                    >
+                      UPDATE
+                    </Button>
+                    <Button
+                      onClick={() => deletePost(post._id)}
+                      variant="outline-danger"
+                    >
+                      DELETE
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </>
-      ) : (
-        "No Data"
-      )}
+              );
+            })}
+          </>
+        ) : (
+          "No Data"
+        )}
+      </div>
     </div>
   );
 }
